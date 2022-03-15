@@ -4,27 +4,29 @@ using Orleans.Clustering.CosmosDB;
 using Orleans.Configuration;
 using Orleans.Hosting;
 using Orleans.Messaging;
+using Orleans;
 using System;
+using Microsoft.Extensions.Hosting;
 
 namespace Orleans.Hosting
 {
     public static class ClusteringExtensions
     {
-        public static ISiloHostBuilder UseCosmosDBMembership(this ISiloHostBuilder builder,
+        public static IHostBuilder UseCosmosDBMembership(this IHostBuilder builder,
            Action<CosmosDBClusteringOptions> configureOptions)
         {
-            return builder.ConfigureServices(services => services.UseCosmosDBMembership(configureOptions));
+            return builder.ConfigureServices((ctx, services) => services.UseCosmosDBMembership(configureOptions));
         }
 
-        public static ISiloHostBuilder UseCosmosDBMembership(this ISiloHostBuilder builder,
+        public static IHostBuilder UseCosmosDBMembership(this IHostBuilder builder,
             Action<OptionsBuilder<CosmosDBClusteringOptions>> configureOptions)
         {
-            return builder.ConfigureServices(services => services.UseCosmosDBMembership(configureOptions));
+            return builder.ConfigureServices((ctx, services) => services.UseCosmosDBMembership(configureOptions));
         }
 
-        public static ISiloHostBuilder UseCosmosDBMembership(this ISiloHostBuilder builder)
+        public static IHostBuilder UseCosmosDBMembership(this IHostBuilder builder)
         {
-            return builder.ConfigureServices(services =>
+            return builder.ConfigureServices((ctx, services) =>
             {
                 services.AddOptions<CosmosDBClusteringOptions>();
                 services.AddSingleton<IMembershipTable, CosmosDBMembershipTable>();
