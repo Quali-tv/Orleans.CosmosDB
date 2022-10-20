@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<LangVersion>latest</LangVersion>
+		<Configurations>Bangin_Debug;Bangin_Release;Debug;Release</Configurations>
 	</PropertyGroup>
 	<PropertyGroup>
 		<PackageId>Orleans.Clustering.CosmosDB</PackageId>
@@ -21,13 +22,30 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<IncludeSource>true</IncludeSource>
 	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Bangin_Debug|AnyCPU' ">
+	  <IntermediateOutputPath>obj\Debug\net6.0</IntermediateOutputPath>
+	  <DebugSymbols>true</DebugSymbols>
+	  <DebugType>portable</DebugType>
+	  <Optimize>false</Optimize>
+	  <OutputPath>bin\Bangin_Debug\net6.0</OutputPath>
+	  <DefineConstants>TRACE;DEBUG;NET;NET6_0;NETCOREAPP</DefineConstants>
+	  <WarningLevel>6</WarningLevel>
+	  <NoWarn>1701;1702;IL2121</NoWarn>
+	  <LangVersion>latest</LangVersion>
+	  <NoStdLib>true</NoStdLib>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Bangin_Release|AnyCPU' ">
+	  <IntermediateOutputPath>obj\Release\net6.0</IntermediateOutputPath>
+	  <Optimize>true</Optimize>
+	  <DefineConstants>TRACE;RELEASE;NET;NET6_0;NETCOREAPP</DefineConstants>
+	</PropertyGroup>
 	<ItemGroup>
 		<Compile Include="..\AssemblyInfo.cs" Link="AssemblyInfo.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.26.0" />
-		<PackageReference Include="Microsoft.Orleans.OrleansRuntime" Version="4.0.0-preview1" />
-		<PackageReference Include="Microsoft.Orleans.Sdk" Version="4.0.0-preview1" />
+		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.31.0" />
+		<PackageReference Include="Microsoft.Orleans.OrleansRuntime" Version="4.0.0-preview2" />
+		<PackageReference Include="Microsoft.Orleans.Sdk" Version="7.0.0-rc2" />
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="Microsoft.Orleans.Sdk" />
