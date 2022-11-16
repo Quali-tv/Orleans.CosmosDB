@@ -43,9 +43,9 @@
 		<Compile Include="..\AssemblyInfo.cs" Link="AssemblyInfo.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.31.0" />
+		<PackageReference Include="Microsoft.Azure.Cosmos" Version="3.31.2" />
 		<PackageReference Include="Microsoft.Orleans.OrleansRuntime" Version="4.0.0-preview2" />
-		<PackageReference Include="Microsoft.Orleans.Sdk" Version="7.0.0-rc2" />
+		<PackageReference Include="Microsoft.Orleans.Sdk" Version="7.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="Microsoft.Orleans.Sdk" />
